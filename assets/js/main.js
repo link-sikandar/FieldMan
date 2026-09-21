@@ -342,14 +342,14 @@
         }).catch(function () {
           if (status) {
             status.textContent = 'Sorry, the message could not be sent. Please email us directly at ' +
-              (form.getAttribute('data-mailto') || 'info@fieldman.com.pk') + '.';
+              (form.getAttribute('data-mailto') || 'Sales@fieldmansolution.com') + '.';
             status.classList.add('is-visible');
             status.classList.remove('is-success');
           }
           if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = submitBtn.dataset.label || 'Send Enquiry'; }
         });
       } else {
-        var to = form.getAttribute('data-mailto') || 'info@fieldman.com.pk';
+        var to = form.getAttribute('data-mailto') || 'Sales@fieldmansolution.com';
         var subject = 'Website enquiry' + (data.service ? ' — ' + data.service : '');
         var lines = Object.keys(data).map(function (k) {
           var label = k.charAt(0).toUpperCase() + k.slice(1).replace(/-/g, ' ');

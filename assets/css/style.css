@@ -254,7 +254,7 @@ a.topbar-item:hover { color: #fff; }
 }
 
 .brand { display: inline-flex; align-items: center; gap: 12px; flex: none; }
-.brand-mark { width: 44px; height: 44px; flex: none; }
+.brand-mark { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; display: block; }
 .brand-text { display: flex; flex-direction: column; line-height: 1; }
 .brand-name {
   font-family: var(--font-head); font-size: 1.42rem; font-weight: 800;
@@ -665,52 +665,20 @@ a.topbar-item:hover { color: #fff; }
 .lb-next { right: 22px; top: 50%; transform: translateY(-50%); }
 
 /* 9. Team, testimonials, process ----------------------------------------- */
-.team-card {
-  background: #fff; border: 1px solid var(--line); border-radius: var(--radius);
-  overflow: hidden; text-align: center;
-  transition: transform .3s var(--ease), box-shadow .3s var(--ease), border-color .3s var(--ease);
-}
-.team-card:hover { transform: translateY(-6px); box-shadow: var(--shadow); border-color: transparent; }
-.team-photo { position: relative; aspect-ratio: 1; overflow: hidden; background: var(--surface-2); }
-.team-photo img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s var(--ease); }
-.team-card:hover .team-photo img { transform: scale(1.05); }
-.team-social {
-  position: absolute; left: 0; right: 0; bottom: 0;
-  display: flex; justify-content: center; gap: 8px; padding: 14px;
-  background: linear-gradient(to top, rgba(6, 22, 38, .88), rgba(6, 22, 38, 0));
-  transform: translateY(100%); opacity: 0;
-  transition: transform .3s var(--ease), opacity .3s var(--ease);
-}
-.team-card:hover .team-social { transform: translateY(0); opacity: 1; }
-.team-social a {
-  width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center;
-  background: rgba(255, 255, 255, .18); color: #fff;
-}
-.team-social a:hover { background: var(--amber-500); color: var(--navy-900); }
-.team-social svg { width: 14px; height: 14px; }
-.team-body { padding: 20px 18px 24px; }
-.team-body h3 { font-size: 1.08rem; margin-bottom: 2px; }
 .team-role {
   font-size: .84rem; font-weight: 600; color: var(--amber-600);
   letter-spacing: .04em; margin-bottom: 10px;
 }
-.team-body p { font-size: .88rem; margin-bottom: 0; }
 
-/* Leadership feature (CEO / Co-founder large cards) */
+/* Leadership feature cards */
 .leader {
-  display: grid; grid-template-columns: 240px 1fr; gap: clamp(22px, 3vw, 38px);
-  align-items: start;
   background: #fff; border: 1px solid var(--line);
   border-radius: var(--radius-lg); padding: clamp(22px, 2.8vw, 34px);
+  transition: transform .3s var(--ease), box-shadow .3s var(--ease), border-color .3s var(--ease);
 }
-.leader-photo { border-radius: var(--radius); overflow: hidden; aspect-ratio: 1; background: var(--surface-2); }
-.leader-photo img { width: 100%; height: 100%; object-fit: cover; }
+.leader:hover { transform: translateY(-6px); box-shadow: var(--shadow); border-color: transparent; }
 .leader h3 { margin-bottom: 2px; font-size: 1.35rem; }
 .leader .team-role { font-size: .9rem; margin-bottom: 14px; }
-.leader blockquote {
-  margin: 0 0 16px; padding-left: 18px; border-left: 3px solid var(--amber-500);
-  font-size: 1rem; font-style: italic; color: var(--ink);
-}
 
 /* Testimonials */
 .testimonial {
@@ -929,7 +897,6 @@ a.topbar-item:hover { color: #fff; }
   .nav, .header-cta .btn { display: none; }
   .burger { display: grid; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
-  .leader { grid-template-columns: 200px 1fr; }
 }
 
 @media (max-width: 960px) {
@@ -964,10 +931,7 @@ a.topbar-item:hover { color: #fff; }
   .projects-grid { grid-template-columns: 1fr; }
   .process { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr; }
-  .leader { grid-template-columns: 1fr; text-align: center; }
-  .leader-photo { max-width: 220px; margin-inline: auto; }
-  .leader blockquote { text-align: left; }
-  .brand-mark { width: 38px; height: 38px; }
+  .brand-mark { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; display: block; }
   .brand-name { font-size: 1.24rem; }
   .btn { padding: 14px 22px; }
   .btn-group .btn { flex: 1 1 100%; }
