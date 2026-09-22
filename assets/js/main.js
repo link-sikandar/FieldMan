@@ -236,6 +236,19 @@
     });
   });
 
+  /* ------------------------------------------------ Leader bio see more */
+  $$('.leader-more').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var open = btn.getAttribute('aria-expanded') === 'true';
+      var bio = document.getElementById(btn.getAttribute('aria-controls'));
+      var label = btn.querySelector('.leader-more-label');
+      btn.setAttribute('aria-expanded', String(!open));
+      if (bio) bio.classList.toggle('is-expanded', !open);
+      if (label) label.textContent = open ? 'See more' : 'See less';
+      if (open && bio) bio.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+    });
+  });
+
   /* --------------------------------------------------------- Back to top */
   var toTop = $('.fab-top');
   if (toTop) {

@@ -680,6 +680,25 @@ a.topbar-item:hover { color: #fff; }
 .leader h3 { margin-bottom: 2px; font-size: 1.35rem; }
 .leader .team-role { font-size: .9rem; margin-bottom: 14px; }
 
+.leader-bio {
+  max-height: 160px; overflow: hidden; position: relative;
+  transition: max-height .4s var(--ease);
+}
+.leader-bio.is-expanded { max-height: 2400px; }
+.leader-bio:not(.is-expanded)::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 52px;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0), #fff);
+  pointer-events: none;
+}
+.leader-more {
+  display: inline-flex; align-items: center; gap: 6px; margin-top: 14px;
+  font-family: var(--font-head); font-weight: 600; font-size: .88rem;
+  color: var(--steel-500); background: none; border: none; padding: 0; cursor: pointer;
+}
+.leader-more:hover { color: var(--amber-600); }
+.leader-more svg { width: 15px; height: 15px; transition: transform .3s var(--ease); }
+.leader-more[aria-expanded="true"] svg { transform: rotate(180deg); }
+
 /* Testimonials */
 .testimonial {
   background: #fff; border: 1px solid var(--line); border-radius: var(--radius);
