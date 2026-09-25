@@ -172,7 +172,9 @@
     var pdDesc       = $('[data-pd-desc]', productDetail);
     var pdEmpty      = $('[data-pd-empty]', productDetail);
     var pdBody       = $('[data-pd-body]', productDetail);
+    var pdIconBox    = $('[data-pd-icon-box]', productDetail);
     var pdIconUse    = $('[data-pd-icon-use]', productDetail);
+    var pdPhoto      = $('[data-pd-photo]', productDetail);
 
     productItems.forEach(function (item) {
       item.addEventListener('click', function () {
@@ -182,7 +184,17 @@
         if (pdBrandName) pdBrandName.textContent = 'Visit ' + item.getAttribute('data-brand');
         if (pdBrandLink) pdBrandLink.href = item.getAttribute('data-brand-url');
         if (pdDesc) pdDesc.textContent = item.getAttribute('data-desc');
-        if (pdIconUse) pdIconUse.setAttribute('href', '#icon-' + item.getAttribute('data-icon'));
+
+        var image = item.getAttribute('data-image');
+        if (image) {
+          if (pdPhoto) { pdPhoto.src = image; pdPhoto.alt = item.getAttribute('data-name'); pdPhoto.hidden = false; }
+          if (pdIconBox) pdIconBox.hidden = true;
+        } else {
+          if (pdIconUse) pdIconUse.setAttribute('href', '#icon-' + item.getAttribute('data-icon'));
+          if (pdIconBox) pdIconBox.hidden = false;
+          if (pdPhoto) pdPhoto.hidden = true;
+        }
+
         if (pdEmpty) pdEmpty.hidden = true;
         if (pdBody) pdBody.hidden = false;
         productDetail.scrollIntoView({ behavior: 'smooth', block: 'start' });
