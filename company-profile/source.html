@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>FieldMan Company Profile 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy-900: #061626;
+    --navy-800: #0a2134;
+    --navy-700: #0f2c46;
+    --navy-600: #16395a;
+    --steel-500: #2c5f8e;
+    --steel-100: #e8f0f8;
+    --amber-400: #ffbe4d;
+    --amber-500: #f5a524;
+    --amber-600: #dd8c0c;
+    --ink: #0e1b2a;
+    --body: #4d5f72;
+    --muted: #7b8c9e;
+    --line: #e3e9f0;
+    --surface: #f4f7fa;
+    --surface-2: #eef3f8;
+    --white: #ffffff;
+    --font-head: 'Sora', 'Segoe UI', system-ui, sans-serif;
+    --font-body: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: var(--navy-900); }
+  body { font-family: var(--font-body); color: var(--body); }
+  h1, h2, h3, h4 { font-family: var(--font-head); color: var(--ink); margin: 0; font-weight: 700; letter-spacing: -.01em; }
+  p { margin: 0; }
+  img { max-width: 100%; display: block; }
+
+  .slide {
+    width: 1440px; height: 810px; position: relative; overflow: hidden;
+    background: var(--white); page-break-after: always;
+    display: flex; flex-direction: column;
+  }
+  .slide:last-child { page-break-after: avoid; }
+  .slide-pad { padding: 64px 88px; height: 100%; display: flex; flex-direction: column; }
+
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-family: var(--font-head); font-size: 15px; font-weight: 700; letter-spacing: .16em;
+    text-transform: uppercase; color: var(--amber-600); margin-bottom: 14px;
+  }
+  .eyebrow::before { content: ""; width: 30px; height: 3px; background: var(--amber-500); flex: none; }
+  .slide--dark .eyebrow { color: var(--amber-400); }
+
+  .slide-title { font-size: 44px; line-height: 1.12; margin-bottom: 14px; }
+  .slide--dark .slide-title { color: #fff; }
+  .slide-sub { font-size: 18px; line-height: 1.6; color: var(--body); max-width: 900px; }
+  .slide--dark .slide-sub { color: rgba(255,255,255,.78); }
+
+  .footer-strip {
+    position: absolute; left: 0; right: 0; bottom: 0; height: 56px;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 88px; font-size: 13px; color: var(--muted);
+    border-top: 1px solid var(--line);
+  }
+  .slide--dark .footer-strip { border-top-color: rgba(255,255,255,.14); color: rgba(255,255,255,.55); }
+  .footer-strip .fs-brand { display: flex; align-items: center; gap: 8px; font-family: var(--font-head); font-weight: 700; color: var(--ink); font-size: 13px; }
+  .slide--dark .footer-strip .fs-brand { color: #fff; }
+  .footer-strip .fs-brand .fs-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--amber-500); }
+
+  .amber-rule { width: 46px; height: 4px; background: var(--amber-500); border-radius: 2px; margin-bottom: 22px; }
+
+  .card {
+    background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 26px 24px;
+  }
+  .slide--dark .card { background: rgba(255,255,255,.05); border-color: rgba(255,255,255,.14); }
+  .slide--dark .card h3, .slide--dark .card h4 { color: #fff; }
+  .slide--dark .card p { color: rgba(255,255,255,.72); }
+
+  .icon-box {
+    width: 46px; height: 46px; border-radius: 10px; background: var(--steel-100); color: var(--steel-500);
+    display: grid; place-items: center; margin-bottom: 16px; flex: none;
+  }
+  .slide--dark .icon-box { background: rgba(245,165,36,.16); color: var(--amber-400); }
+  .icon-box svg { width: 22px; height: 22px; }
+
+  .stat-row { display: flex; gap: 48px; }
+  .stat-num { font-family: var(--font-head); font-size: 46px; font-weight: 800; color: var(--amber-500); line-height: 1; }
+  .stat-label { font-size: 14px; color: var(--muted); margin-top: 8px; font-weight: 500; }
+  .slide--dark .stat-label { color: rgba(255,255,255,.62); }
+
+  .check-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+  .check-list li { position: relative; padding-left: 28px; font-size: 15px; color: var(--body); line-height: 1.5; }
+  .slide--dark .check-list li { color: rgba(255,255,255,.82); }
+  .check-list li::before {
+    content: ""; position: absolute; left: 0; top: 5px; width: 16px; height: 16px; border-radius: 50%;
+    background: var(--steel-100) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232c5f8e' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E") center / 9px no-repeat;
+  }
+  .slide--dark .check-list li::before { background-color: rgba(245,165,36,.2); background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffbe4d' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E"); }
+
+  .pill { display: inline-block; padding: 6px 16px; border-radius: 40px; background: var(--amber-500); color: var(--navy-900); font-family: var(--font-head); font-weight: 700; font-size: 12px; letter-spacing: .06em; text-transform: uppercase; }
+
+  .role-tag { font-family: var(--font-head); font-size: 13px; font-weight: 600; letter-spacing: .04em; color: var(--amber-600); margin-bottom: 10px; }
+  .slide--dark .role-tag { color: var(--amber-400); }
+
+  /* -------- Cover -------- */
+  .cover {
+    background: radial-gradient(circle at 18% 18%, var(--navy-700), var(--navy-900) 60%);
+    color: #fff; align-items: center; justify-content: center; text-align: center; position: relative;
+  }
+  .cover::before {
+    content: ""; position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(245,165,36,.10), transparent 45%);
+  }
+  .cover-logo { width: 118px; height: 118px; border-radius: 50%; object-fit: cover; margin-bottom: 34px; border: 3px solid rgba(255,255,255,.18); position: relative; z-index: 1; }
+  .cover-word { font-family: var(--font-head); font-size: 68px; font-weight: 800; letter-spacing: -.02em; position: relative; z-index: 1; }
+  .cover-word span { color: var(--amber-400); }
+  .cover-tag { font-family: var(--font-head); font-size: 17px; letter-spacing: .3em; text-transform: uppercase; color: var(--amber-400); margin-top: 14px; position: relative; z-index: 1; }
+  .cover-title { font-size: 26px; color: rgba(255,255,255,.85); margin-top: 46px; font-weight: 500; position: relative; z-index: 1; }
+  .cover-year { font-size: 15px; color: rgba(255,255,255,.5); margin-top: 10px; position: relative; z-index: 1; }
+
+  /* -------- grids -------- */
+  .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  .grid2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 26px; }
+  .grid4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+
+  .media-frame { border-radius: 16px; overflow: hidden; }
+  .media-frame img { width: 100%; height: 100%; object-fit: cover; }
+
+  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; flex: 1; }
+  .split--rev { grid-template-columns: 1fr 1fr; }
+  .split--rev .split-media { order: 2; }
+
+  .project-slide .split-media { height: 100%; }
+  .project-scope-tag { display: inline-flex; align-items:center; gap:8px; background: var(--steel-100); color: var(--steel-500); font-family: var(--font-head); font-weight:700; font-size:12px; letter-spacing:.05em; text-transform:uppercase; padding:7px 14px; border-radius:8px; margin-bottom:18px; }
+
+  .leader-card h3 { font-size: 21px; margin-bottom: 2px; }
+  .leader-card p { font-size: 14.5px; line-height: 1.55; color: var(--body); }
+
+  .brand-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px; }
+  .brand-name { font-family: var(--font-head); font-weight: 700; font-size: 16px; color: var(--ink); }
+  .brand-url { font-size: 12px; color: var(--muted); }
+
+  .contact-item { display: flex; gap: 14px; align-items: flex-start; margin-bottom: 22px; }
+  .contact-item .icon-box { margin-bottom: 0; }
+  .contact-item .ci-label { font-size: 13px; color: rgba(255,255,255,.5); margin-bottom: 3px; text-transform: uppercase; letter-spacing: .08em; font-weight: 600; }
+  .contact-item .ci-value { font-size: 17px; color: #fff; font-weight: 500; }
+
+  .client-chip { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 16px 18px; font-family: var(--font-head); font-weight: 600; font-size: 14.5px; color: var(--ink); text-align: center; }
+</style>
+</head>
+<body>
+
+<!-- 1. COVER -->
+<section class="slide cover">
+  <img class="cover-logo" src="file:///D:/FieldMan/assets/img/main-logo.jpeg" alt="">
+  <div class="cover-word">Field<span>Man</span></div>
+  <div class="cover-tag">Solution for Everyone</div>
+  <div class="cover-title">Company Profile</div>
+  <div class="cover-year">2026 &middot; Fieldman Solution &middot; Karachi, Pakistan</div>
+</section>
+
+<!-- 2. INTRODUCTION -->
+<section class="slide">
+  <div class="slide-pad">
+    <span class="eyebrow">Introduction</span>
+    <h1 class="slide-title">Built on site experience,<br>not on brochures</h1>
+    <p class="slide-sub">Fieldman Solution is a multidiscipline engineering and construction contractor serving
+    Pakistan&rsquo;s manufacturing and energy sectors. We design, fabricate, erect, test and hand over &mdash;
+    covering civil works, electrical and instrumentation, mechanical erection and piping systems &mdash; taking
+    the whole scope and carrying the responsibility through to commissioning.</p>
+
+    <div style="flex:1"></div>
+
+    <div class="stat-row">
+      <div><div class="stat-num">12+</div><div class="stat-label">Years in the Field</div></div>
+      <div><div class="stat-num">250+</div><div class="stat-label">Projects Delivered</div></div>
+      <div><div class="stat-num">38+</div><div class="stat-label">MW of Solar Structures</div></div>
+      <div><div class="stat-num">1.5M+</div><div class="stat-label">Safe Man-Hours</div></div>
+    </div>
+  </div>
+  <div class="footer-strip"><span class="fs-brand"><span class="fs-dot"></span>FieldMan</span><span>02</span></div>
+</section>
+
+<!-- 3. MISSION / VISION / VALUES -->
+<section class="slide">
+  <div class="slide-pad">
+    <span class="eyebrow">Who We Are</span>
+    <h1 class="slide-title">Mission, vision &amp; values</h1>
+    <div style="height:28px"></div>
+    <div class="grid3">
+      <div class="card">
+        <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
+        <h3>Our Mission</h3>
+        <p style="margin-top:10px;font-size:15px;line-height:1.6">To deliver industrial engineering works that are safe, correct and finished on time &mdash;
+        removing the coordination risk our clients would otherwise carry themselves.</p>
+      </div>
+      <div class="card">
+        <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></div>
+        <h3>Our Vision</h3>
+        <p style="margin-top:10px;font-size:15px;line-height:1.6">To be the contractor Pakistani industry calls first when a project cannot afford
+        delay, rework, or an unsafe site.</p>
+      </div>
+      <div class="card">
+        <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg></div>
+        <h3>Our Values</h3>
+        <p style="margin-top:10px;font-size:15px;line-height:1.6">Safety before schedule. Honest measurement and honest pricing. Finish the last ten
+        percent properly. Leave the plant cleaner than we found it.</p>
+      </div>
+    </div>
+  </div>
+  <div class="footer-strip"><span class="fs-brand"><span class="fs-dot"></span>FieldMan</span><span>03</span></div>
+</section>
+
+<!-- 4. THE FIELDMAN GROUP -->
+<section class="slide">
+  <div class="slide-pad">
+    <span class="eyebrow">The Fieldman Group</span>
+    <h1 class="slide-title">Three companies, one accountable group</h1>
+    <p class="slide-sub">Fieldman is a group of companies bringing engineering, technology and agricultural
+    expertise together under one accountable parent.</p>
+    <div style="height:28px"></div>
+    <div class="grid3">
+      <div class="card">
+        <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg></div>
+        <h3 style="font-size:19px">Fieldman Solution</h3>
+        <p style="margin-top:10px;font-size:15px;line-height:1.6">Our engineering and construction company &mdash; civil, electrical, instrumentation
+        and mechanical works delivered for industrial and energy clients.</p>
+      </div>
+      <div class="card">
+        <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+        <h3 style="font-size:19px">Fieldman Tech</h3>
+        <p style="margin-top:10px;font-size:15px;line-height:1.6">Our technology company &mdash; IT infrastructure, software and digital solutions
+        supporting clients beyond the plant floor.</p>
+      </div>
+      <div class="card">
+        <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg></div>
+        <h3 style="font-size:19px">Egro Field</h3>
+        <p style="margin-top:10px;font-size:15px;line-height:1.6">Our Egro company &mdash; supporting clients with Egro-based work as part of the
+        wider Fieldman Group.</p>
+      </div>
+    </div>
+  </div>
+  <div class="footer-strip"><span class="fs-brand"><span class="fs-dot"></span>FieldMan</span><span>04</span></div>
+</section>
+
+<!-- 5. LEADERSHIP ROW 1 -->
+<section class="slide">
+  <div class="slide-pad">
+    <span class="eyebrow">Leadership</span>
+    <h1 class="slide-title">The people accountable for your project</h1>
+    <p class="slide-sub">FieldMan is led by working engineers. Our directors are reachable, and they visit sites.</p>
+    <div style="height:30px"></div>
+    <div class="grid3">
+      <div class="card leader-card">
+        <h3>Imran Asghar</h3>
+        <div class="role-tag">Chief Executive Officer</div>
+        <p>20 years in the Engineering, Procurement &amp; Construction (EPC) industry. Sets Fieldman Solution&rsquo;s
+        overall strategy, leads major client relationships and holds every project to one standard of quality
+        and safety.</p>
+      </div>
+      <div class="card leader-card">
+        <h3>Ali Mustafa</h3>
+        <div class="role-tag">Chief Sales Officer</div>
+        <p>15+ years in the oil &amp; gas industry across upstream, midstream and downstream operations. Leads
+        business development, client relationships and revenue growth.</p>
+      </div>
+      <div class="card leader-card">
+        <h3>Kamran Asghar</h3>
+        <div class="role-tag">Chief Technical Officer</div>
+        <p>15+ years across sugar, ethanol, cement, power generation and solar. Leads engineering design,
+        project execution, commissioning and quality assurance.</p>
+      </div>
+    </div>
+  </div>
+  <div class="footer-strip"><span class="fs-brand"><span class="fs-dot"></span>FieldMan</span><span>05</span></div>
+</section>
+
+<!-- 6. LEADERSHIP ROW 2 -->
+<section class="slide">
+  <div class="slide-pad">
+    <span class="eyebrow">Leadership</span>
+    <h1 class="slide-title">Finance &amp; operations</h1>
+    <div style="height:30px"></div>
+    <div class="grid2" style="max-width:920px">
+      <div class="card leader-card">
+        <h3>Khurram Atta</h3>
+        <div class="role-tag">Chief Accounts Officer</div>
+        <p>14 years of corporate finance experience within the construction and engineering industry.
+        Oversees financial planning, accounts and compliance.</p>
+      </div>
+      <div class="card leader-card">
+        <h3>Abdul Muqeet Rajput</h3>
+        <div class="role-tag">General Manager</div>
+        <p>15+ years managing industrial projects in sugar, ethanol, cement, power generation and textiles.
+        Runs day-to-day execution across all live sites.</p>
+      </div>
+    </div>
+  </div>
+  <div class="footer-strip"><span class="fs-brand"><span class="fs-dot"></span>FieldMan</span><span>06</span></div>
+</section>
+
+<!-- 7. SERVICES OVERVIEW -->
+<section class="slide">
+  <div class="slide-pad">
+    <span class="eyebrow">Capabilities</span>
+    <h1 class="slide-title">What FieldMan delivers</h1>
+    <p class="slide-sub">Each discipline below is staffed, equipped and supervised in-house.</p>
+    <div style="height:26px"></div>
+    <div class="grid4">
+      <div class="card" style="padding:20px 18px">
+        <div class="icon-box" style="width:40px;height:40px;margin-bottom:12px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="19" height="19"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg></div>
+        <h4 style="font-size:15px">Civil &amp; Structural Works</h4>
+      </div>
+      <div class="card" style="padding:20px 18px">
+        <div class="icon-box" style="width:40px;height:40px;margin-bottom:12px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="19" height="19"><circle cx="12" cy="12" r="4"/><line x1="12" y1="1" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="23"/><line x1="1" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="23" y2="12"/></svg></div>
+        <h4 style="font-size:15px">Solar EPC &amp; PV Structures</h4>
+      </div>
+      <div class="card" style="padding:20px 18px">
+        <div class="icon-box" style="width:40px;height:40px;margin-bottom:12px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="19" height="19"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+        <h4 style="font-size:15px">Electrical Engineering &amp; Power</h4>
+      </div>
+      <div class="card" style="padding:20px 18px">
+        <div class="icon-box" style="width:40px;height:40px;margin-bottom:12px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="19" height="19"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <h4 style="font-size:15px">Instrumentation &amp; Automation</h4>
+      </div>
+      <div class="card" style="padding:20px 18px">
+        <div class="icon-box" style="width:40px;height:40px;margin-bottom:12px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="19" height="19"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.6a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9v.09a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></div>
+        <h4 style="font-size:15px">Mechanical Engineering &amp; Fabrication</h4>
+      </div>
+      <div class="card" style="padding:20px 18px">
+        <div class="icon-box" style="width:40px;height:40px;margin-bottom:12px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="19" height="19"><path d="M4 8h8a4 4 0 0 1 4 4v8"/><rect x="2" y="5" width="4" height="6" rx="1"/><rect x="14" y="18" width="4" height="4" rx="1"/></svg></div>
+        <h4 style="font-size:15px">Piping &amp; Pipeline Systems</h4>
+      </div>
+      <div class="card" style="padding:20px 18px">
+        <div class="icon-box" style="width:40px;height:40px;margin-bottom:12px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="19" height="19"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
+        <h4 style="font-size:15px">Maintenance &amp; Plant Shutdowns</h4>
+      </div>
+      <div class="card" style="padding:20px 18px;background:var(--navy-900);border-color:var(--navy-900)">
+        <p style="color:#fff;font-family:var(--font-head);font-weight:700;font-size:15px;line-height:1.4">One
+        contract.<br>One accountable team.</p>
+      </div>
+    </div>
+  </div>
+  <div class="footer-strip"><span class="fs-brand"><span class="fs-dot"></span>FieldMan</span><span>07</span></div>
+</section>
+
+<!-- 8. SERVICE DETAIL: CIVIL + SOLAR -->
+<section class="slide">
+  <div class="slide-pad">
+    <div class="grid2" style="flex:1">
+      <div>
+        <span class="eyebrow">01 &mdash; Civil &amp; Structural</span>
+        <h2 style="font-size:28px;margin-bottom:14px">Civil &amp; Structural Works</h2>
+        <p style="font-size:15px;line-height:1.65;margin-bottom:16px">Foundations that hold alignment, slabs
+        that stay flat and drainage that actually drains &mdash; set out to survey-grade accuracy.</p>
+        <ul class="check-list">
+          <li>Machine and equipment foundations</li>
+          <li>RCC frames, slabs, beams and columns</li>
+          <li>Industrial flooring, plinths and trenches</li>
+        </ul>
+      </div>
+      <div class="media-frame" style="height:340px"><img src="file:///D:/FieldMan/assets/img/projects/civil-slab-shuttering.jpg" alt=""></div>
+    </div>
+    <div style="height:24px"></div>
+    <div class="grid2" style="flex:1">
+      <div class="media-frame" style="height:340px"><img src="file:///D:/FieldMan/assets/img/projects/solar-mounting-array.jpg" alt=""></div>
+      <div>
+        <span class="eyebrow">02 &mdash; Solar EPC</span>
+        <h2 style="font-size:28px;margin-bottom:14px">Solar EPC &amp; PV Mounting Structures</h2>
+        <p style="font-size:15px;line-height:1.65;margin-bottom:16px">Hot-dip galvanised structures engineered
+        for local wind and seismic loads, matched to the actual roof profile.</p>
+        <ul class="check-list">
+          <li>Structural survey and load assessment</li>
+          <li>Rooftop, shell-roof and ground-mount systems</li>
+          <li>Module mounting and DC cable routing</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-strip"><span class="fs-brand"><span class="fs-dot"></span>FieldMan</span><span>08</span></div>
+</section>
+
+<!-- 9. SERVICE DETAIL: ELECTRICAL + INSTRUMENTATION -->
+<section class="slide">
+  <div class="slide-pad">
+    <div class="grid2" style="flex:1">
+      <div>
+        <span class="eyebrow">03 &mdash; Electrical</span>
+        <h2 style="font-size:28px;margin-bottom:14px">Electrical Engineering &amp; Power Solutions</h2>
+        <p style="font-size:15px;line-height:1.65;margin-bottom:16px">Complete HV, MV and LV power distribution
+        &mdash; designed, installed and commissioned, including solar PV power systems.</p>
+        <ul class="check-list">
+          <li>HV/MV/LV switchgear &amp; power distribution</li>
+          <li>Transformers, generators &amp; motor control</li>
+          <li>Solar PV, hybrid &amp; battery storage systems</li>
+        </ul>
+      </div>
+      <div class="media-frame" style="height:340px"><img src="file:///D:/FieldMan/assets/img/projects/electrical-transformer-yard.jpg" alt=""></div>
+    </div>
+    <div style="height:24px"></div>
+    <div class="grid2" style="flex:1">
+      <div class="media-frame" style="height:340px"><img src="file:///D:/FieldMan/assets/img/projects/SolarPowerSystem-4.jpeg" alt=""></div>
+      <div>
+        <span class="eyebrow">04 &mdash; Instrumentation</span>
+        <h2 style="font-size:28px;margin-bottom:14px">Instrumentation, Automation &amp; Control</h2>
+        <p style="font-size:15px;line-height:1.65;margin-bottom:16px">Field instrumentation, PLC/DCS and SCADA
+        systems &mdash; engineered and commissioned for reliable process control.</p>
+        <ul class="check-list">
+          <li>Flow, level, pressure &amp; temperature instruments</li>
+          <li>PLC/DCS control systems &amp; SCADA/HMI</li>
+          <li>Loop checking, calibration &amp; commissioning</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-strip"><span class="fs-brand"><span class="fs-dot"></span>FieldMan</span><span>09</span></div>
+</section>
+
+<!-- 10. SERVICE DETAIL: MECHANICAL + PIPING -->
+<section class="slide">
+  <div class="slide-pad">
+    <div class="grid2" style="flex:1">
+      <div>
+        <span class="eyebrow">05 &mdash; Mechanical</span>
+        <h2 style="font-size:28px;margin-bottom:14px">Mechanical Engineering &amp; Fabrication</h2>
+        <p style="font-size:15px;line-height:1.65;margin-bottom:16px">Storage tanks, process piping, structural
+        steel and plant equipment &mdash; fabricated, erected and maintained by certified crews.</p>
+        <ul class="check-list">
+          <li>Storage tank &amp; pressure vessel fabrication</li>
+          <li>Structural steel fabrication &amp; erection</li>
+          <li>Mechanical erection &amp; plant installation</li>
+        </ul>
+      </div>
+      <div class="media-frame" style="height:340px"><img src="file:///D:/FieldMan/assets/img/projects/steel-mezzanine-frame.jpg" alt=""></div>
+    </div>
+    <div style="height:24px"></div>
+    <div class="grid2" style="flex:1">
+      <div class="media-frame" style="height:340px"><img src="file:///D:/FieldMan/assets/img/projects/piping-hdpe-network.jpg" alt=""></div>
+      <div>
+        <span class="eyebrow">06 &mdash; Piping</span>
+        <h2 style="font-size:28px;margin-bottom:14px">Piping &amp; Pipeline Systems</h2>
+        <p style="font-size:15px;line-height:1.65;margin-bottom:16px">Carbon steel, stainless, HDPE and GI
+        systems &mdash; prefabricated, welded, tested and insulated for utility and process duty.</p>
+        <ul class="check-list">
+          <li>Process &amp; utility piping networks</li>
+          <li>Spool prefabrication and shop welding</li>
+          <li>Hydro-testing, flushing and insulation</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-strip"><span class="fs-brand"><span class="fs-dot"></span>FieldMan</span><span>10</span></div>
+</section>
+
+<!-- 11. MAINTENANCE + HOW WE WORK -->
+<section class="slide slide--dark" style="background:var(--navy-900)">
+  <div class="slide-pad">
+    <span class="eyebrow">07 &mdash; Maintenance</span>
+    <h1 class="slide-title">Maintenance &amp; Plant Shutdowns</h1>
+    <p class="slide-sub">Planned turnarounds, breakdown response and annual maintenance contracts &mdash;
+    mobilised fast, with your production window protected.</p>
+    <div style="height:30px"></div>
+    <span class="eyebrow">How We Work</span>
+    <div class="grid4">
+      <div class="card"><div style="font-family:var(--font-head);font-size:28px;font-weight:800;color:var(--amber-400);margin-bottom:10px">01</div><h4 style="font-size:15px">Survey &amp; Consultation</h4><p style="margin-top:8px;font-size:13.5px">As-built conditions and production constraints recorded on site.</p></div>
+      <div class="card"><div style="font-family:var(--font-head);font-size:28px;font-weight:800;color:var(--amber-400);margin-bottom:10px">02</div><h4 style="font-size:15px">Engineering &amp; Proposal</h4><p style="margin-top:8px;font-size:13.5px">Calculations, GA drawings and a BOQ with a firm price and programme.</p></div>
+      <div class="card"><div style="font-family:var(--font-head);font-size:28px;font-weight:800;color:var(--amber-400);margin-bottom:10px">03</div><h4 style="font-size:15px">Mobilisation &amp; Execution</h4><p style="margin-top:8px;font-size:13.5px">Method statements, JSAs, crews on site with daily HSE reporting.</p></div>
+      <div class="card"><div style="font-family:var(--font-head);font-size:28px;font-weight:800;color:var(--amber-400);margin-bottom:10px">04</div><h4 style="font-size:15px">Testing &amp; Handover</h4><p style="margin-top:8px;font-size:13.5px">Inspection, testing, punch-list closure and a documented handover pack.</p></div>
+    </div>
+  </div>
+  <div class="footer-strip"><span class="fs-brand"><span class="fs-dot"></span>FieldMan</span><span>11</span></div>
+</section>
+
+<!-- 12. HSE -->
+<section class="slide slide--dark" style="background:var(--navy-900)">
+  <div class="slide-pad">
+    <span class="eyebrow">Health, Safety &amp; Environment</span>
+    <h1 class="slide-title">Safety is a condition of work,<br>not a department</h1>
+    <p class="slide-sub" style="margin-bottom:22px">Fieldman Solution is committed to conducting all engineering,
+    procurement, fabrication, construction and maintenance activities in a manner that protects our employees,
+    contractors, clients and the public. No project, schedule or commercial objective takes priority over the
+    safety of people and protection of the environment.</p>
+
+    <div class="stat-row" style="margin-bottom:30px">
+      <div><div class="stat-num">1.5M+</div><div class="stat-label">Safe Man-Hours</div></div>
+      <div><div class="stat-num">100%</div><div class="stat-label">PPE Compliance Target</div></div>
+      <div><div class="stat-num">52+</div><div class="stat-label">Toolbox Talks / Year</div></div>
+      <div><div class="stat-num">4+</div><div class="stat-label">Site Audits / Month</div></div>
+    </div>
+
+    <div class="grid2">
+      <ul class="check-list">
+        <li>Site-specific Risk Assessments &amp; Job Safety Analysis before every task</li>
+        <li>Permit-to-Work systems for hot work, height, confined space &amp; electrical isolation</li>
+        <li>Any worker may stop unsafe work &mdash; without permission, without consequence</li>
+      </ul>
+      <ul class="check-list">
+        <li>Documented incident investigation and corrective action</li>
+        <li>Environmental controls: waste segregation, spill prevention, emissions control</li>
+        <li>Regular HSE audits, inspections and continuous improvement</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-strip"><span class="fs-brand"><span class="fs-dot"></span>FieldMan</span><span>12</span></div>
+</section>
+
+<!-- 13. PRODUCT BRAND PARTNERS -->
+<section class="slide">
+  <div class="slide-pad">
+    <span class="eyebrow">Our Product Partners</span>
+    <h1 class="slide-title">Ten brands, one integrated supply chain</h1>
+    <p class="slide-sub">We work with established manufacturers so every discipline on a project is backed by
+    equipment we trust.</p>
+    <div style="height:24px"></div>
+    <div class="grid3">
+      <div class="card" style="padding:20px 22px"><div class="brand-row"><span class="brand-name">ValveIT</span></div><p style="font-size:13.5px">Industrial valves &mdash; ball, butterfly, globe, gate, control &amp; safety valves.</p></div>
+      <div class="card" style="padding:20px 22px"><div class="brand-row"><span class="brand-name">Sealtek</span></div><p style="font-size:13.5px">Mechanical seals, gaskets, packings &amp; sealing solutions.</p></div>
+      <div class="card" style="padding:20px 22px"><div class="brand-row"><span class="brand-name">KENDO</span></div><p style="font-size:13.5px">Lighting, audio-visual &amp; smart building solutions.</p></div>
+      <div class="card" style="padding:20px 22px"><div class="brand-row"><span class="brand-name">B&auml;nninger (BIR)</span></div><p style="font-size:13.5px">Thermoplastic piping systems &mdash; PVC-U, PE100, PP-R &amp; more.</p></div>
+      <div class="card" style="padding:20px 22px"><div class="brand-row"><span class="brand-name">CTP M&uuml;hendislik</span></div><p style="font-size:13.5px">Water cooling towers &mdash; package, construction &amp; closed type.</p></div>
+      <div class="card" style="padding:20px 22px"><div class="brand-row"><span class="brand-name">ABB</span></div><p style="font-size:13.5px">Electrification, motion &amp; process automation.</p></div>
+      <div class="card" style="padding:20px 22px"><div class="brand-row"><span class="brand-name">Mitsubishi Electric</span></div><p style="font-size:13.5px">Factory automation &mdash; PLCs, drives &amp; robots.</p></div>
+      <div class="card" style="padding:20px 22px"><div class="brand-row"><span class="brand-name">Supcon</span></div><p style="font-size:13.5px">Process instrumentation &amp; automation.</p></div>
+      <div class="card" style="padding:20px 22px"><div class="brand-row"><span class="brand-name">Yokogawa</span></div><p style="font-size:13.5px">Process measurement &amp; control systems.</p></div>
+    </div>
+  </div>
+  <div class="footer-strip"><span class="fs-brand"><span class="fs-dot"></span>FieldMan</span><span>13</span></div>
+</section>
+
+<!-- 14. PROJECT: PAK ETHANOL -->
+<section class="slide project-slide">
+  <div class="split" style="height:100%;gap:0">
+    <div class="split-media" style="height:100%"><img src="file:///D:/FieldMan/assets/img/projects/PakEthanol-3.jpeg" style="width:100%;height:100%;object-fit:cover" alt=""></div>
+    <div class="slide-pad" style="padding-left:56px">
+      <span class="project-scope-tag">Complete EPC Solution</span>
+      <h2 style="font-size:27px;line-height:1.2;margin-bottom:16px">100 KLPD Distillery Unit<br>Pak Ethanol</h2>
+      <p style="font-size:14.5px;line-height:1.65;margin-bottom:18px">A complete EPC solution for a 100 KLPD
+      distillery unit, covering mechanical, electrical, instrumentation, piping, structural fabrication,
+      equipment installation and plant automation.</p>
+      <ul class="check-list">
+        <li>Mechanical equipment supply &amp; installation</li>
+        <li>HV/MV/LV electrical systems</li>
+        <li>PLC/DCS &amp; process automation</li>
+        <li>Testing, commissioning &amp; plant start-up</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-strip" style="background:#fff"><span class="fs-brand"><span class="fs-dot"></span>FieldMan</span><span>14</span></div>
+</section>
+
+<!-- 15. PROJECT: ETHANOL PLANT BIOGAS -->
+<section class="slide project-slide">
+  <div class="split split--rev" style="height:100%;gap:0">
+    <div class="slide-pad" style="padding-right:56px">
+      <span class="project-scope-tag">Complete EPC Solution</span>
+      <h2 style="font-size:27px;line-height:1.2;margin-bottom:16px">65 m&sup3;/h Biogas Plant<br>Ethanol Plant</h2>
+      <p style="font-size:14.5px;line-height:1.65;margin-bottom:18px">A complete EPC solution for a 65 m&sup3;/h
+      biogas plant utilising waste/effluent from the outlet of an ethanol plant, integrated with existing
+      utilities.</p>
+      <ul class="check-list">
+        <li>Biogas digester &amp; associated equipment</li>
+        <li>Electrical power distribution &amp; MCC systems</li>
+        <li>PLC/SCADA-based process automation</li>
+        <li>Integration with existing ethanol plant utilities</li>
+      </ul>
+    </div>
+    <div class="split-media" style="height:100%"><img src="file:///D:/FieldMan/assets/img/projects/EthanolPlant-3.jpeg" style="width:100%;height:100%;object-fit:cover" alt=""></div>
+  </div>
+  <div class="footer-strip" style="background:#fff"><span class="fs-brand"><span class="fs-dot"></span>FieldMan</span><span>15</span></div>
+</section>
+
+<!-- 16. PROJECT: DADU ENERGY -->
+<section class="slide project-slide">
+  <div class="split" style="height:100%;gap:0">
+    <div class="split-media" style="height:100%"><img src="file:///D:/FieldMan/assets/img/projects/DaduEnergy.jpeg" style="width:100%;height:100%;object-fit:cover" alt=""></div>
+    <div class="slide-pad" style="padding-left:56px">
+      <span class="project-scope-tag">Complete EPC Solution</span>
+      <h2 style="font-size:27px;line-height:1.2;margin-bottom:16px">Waste Heat Recovery Boiler<br>Dadu Energy, Dadu</h2>
+      <p style="font-size:14.5px;line-height:1.65;margin-bottom:18px">A complete EPC solution for a Waste Heat
+      Recovery Boiler (WHRB), recovering waste heat to produce useful steam and improve overall plant energy
+      efficiency.</p>
+      <ul class="check-list">
+        <li>WHRB engineering &amp; installation</li>
+        <li>Steam &amp; condensate piping systems</li>
+        <li>PLC/DCS-based automation &amp; control</li>
+        <li>Testing, pre-commissioning &amp; commissioning</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-strip" style="background:#fff"><span class="fs-brand"><span class="fs-dot"></span>FieldMan</span><span>16</span></div>
+</section>
+
+<!-- 17. PROJECT: NATIONAL FOODS SOLAR -->
+<section class="slide project-slide">
+  <div class="split split--rev" style="height:100%;gap:0">
+    <div class="slide-pad" style="padding-right:56px">
+      <span class="project-scope-tag">Complete EPC Solution</span>
+      <h2 style="font-size:27px;line-height:1.2;margin-bottom:16px">900 kW Solar Power System<br>National Foods, Korangi</h2>
+      <p style="font-size:14.5px;line-height:1.65;margin-bottom:18px">A 900 kW solar power system delivered on a
+      complete EPC basis &mdash; system engineering, procurement, installation, electrical integration, testing
+      and commissioning.</p>
+      <ul class="check-list">
+        <li>Solar PV module supply &amp; installation</li>
+        <li>Grid-tied solar inverter system</li>
+        <li>Earthing &amp; lightning protection system</li>
+        <li>Grid synchronization &amp; plant integration</li>
+      </ul>
+    </div>
+    <div class="split-media" style="height:100%"><img src="file:///D:/FieldMan/assets/img/projects/SolarPowerSystem-4.jpeg" style="width:100%;height:100%;object-fit:cover" alt=""></div>
+  </div>
+  <div class="footer-strip" style="background:#fff"><span class="fs-brand"><span class="fs-dot"></span>FieldMan</span><span>17</span></div>
+</section>
+
+<!-- 18. CLIENTS -->
+<section class="slide">
+  <div class="slide-pad">
+    <span class="eyebrow">Our Clients</span>
+    <h1 class="slide-title">Working inside live industrial plants</h1>
+    <p class="slide-sub">Client names are shown by sector; full references and completion certificates are
+    available on request during tender.</p>
+    <div style="height:28px"></div>
+    <div class="grid4" style="gap:16px">
+      <div class="client-chip">Textile &amp; Apparel Group</div>
+      <div class="client-chip">Food Processing Plant</div>
+      <div class="client-chip">Cement Manufacturer</div>
+      <div class="client-chip">Chemical Processing Facility</div>
+      <div class="client-chip">Pharmaceutical Plant</div>
+      <div class="client-chip">Beverage Bottling Line</div>
+      <div class="client-chip">Independent Power Producer</div>
+      <div class="client-chip">Logistics &amp; Warehousing</div>
+      <div class="client-chip">Paper &amp; Packaging Mill</div>
+      <div class="client-chip">Steel Re-Rolling Mill</div>
+    </div>
+  </div>
+  <div class="footer-strip"><span class="fs-brand"><span class="fs-dot"></span>FieldMan</span><span>18</span></div>
+</section>
+
+<!-- 19. WHY CHOOSE US -->
+<section class="slide">
+  <div class="slide-pad">
+    <span class="eyebrow">Why Choose Us</span>
+    <h1 class="slide-title">Six reasons clients keep calling us back</h1>
+    <div style="height:26px"></div>
+    <div class="grid3">
+      <div class="card"><h4 style="font-size:16px;margin-bottom:8px">Single-Point Responsibility</h4><p style="font-size:14px;line-height:1.6">One contract and one accountable team across civil, mechanical, electrical and solar scopes.</p></div>
+      <div class="card"><h4 style="font-size:16px;margin-bottom:8px">In-House Engineering</h4><p style="font-size:14px;line-height:1.6">Our own design desk produces structural calculations, GA drawings and BOQs.</p></div>
+      <div class="card"><h4 style="font-size:16px;margin-bottom:8px">Safety Without Compromise</h4><p style="font-size:14px;line-height:1.6">Documented JSAs, toolbox talks, inspected scaffolding and full PPE on every site.</p></div>
+      <div class="card"><h4 style="font-size:16px;margin-bottom:8px">Own Fabrication Facility</h4><p style="font-size:14px;line-height:1.6">Shop fabrication under controlled conditions shortens site time and improves quality.</p></div>
+      <div class="card"><h4 style="font-size:16px;margin-bottom:8px">Certified Welders &amp; Technicians</h4><p style="font-size:14px;line-height:1.6">Qualified to recognised welding procedures with WPS/PQR documentation.</p></div>
+      <div class="card"><h4 style="font-size:16px;margin-bottom:8px">Delivered On Schedule</h4><p style="font-size:14px;line-height:1.6">Baseline programmes, weekly progress reporting and resource loading.</p></div>
+    </div>
+  </div>
+  <div class="footer-strip"><span class="fs-brand"><span class="fs-dot"></span>FieldMan</span><span>19</span></div>
+</section>
+
+<!-- 20. CONTACT / THANK YOU -->
+<section class="slide slide--dark" style="background:radial-gradient(circle at 82% 20%, var(--navy-700), var(--navy-900) 60%)">
+  <div class="slide-pad" style="justify-content:center">
+    <div style="max-width:560px">
+      <h1 style="font-size:52px;color:#fff;margin-bottom:8px">Thank You</h1>
+      <div class="amber-rule"></div>
+      <p style="color:rgba(255,255,255,.72);font-size:16px;line-height:1.6;margin-bottom:36px">Send us a
+      drawing, a photo of the site, or simply describe the problem. We will tell you honestly whether we are
+      the right contractor for it.</p>
+
+      <div class="contact-item">
+        <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <div><div class="ci-label">Address</div><div class="ci-value">P-130 Gulshan-e-Roomi, Gulistan-e-Jauhar Block 8, Karachi</div></div>
+      </div>
+      <div class="contact-item">
+        <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+        <div><div class="ci-label">Phone</div><div class="ci-value">+92 334 3016473 &middot; +92 300 6723373</div></div>
+      </div>
+      <div class="contact-item">
+        <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+        <div><div class="ci-label">Email</div><div class="ci-value">Sales@fieldmansolution.com</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-strip"><span class="fs-brand" style="color:#fff"><span class="fs-dot"></span>FieldMan &mdash; Solution for Everyone</span><span>20</span></div>
+</section>
+
+</body>
+</html>

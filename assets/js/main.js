@@ -142,6 +142,54 @@
     });
   }
 
+  /* ------------------------------------------------------ Product filter */
+  var productFilterBtns = $$('.product-filter-btn');
+  var productGroups = $$('.product-group');
+  if (productFilterBtns.length && productGroups.length) {
+    productFilterBtns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var want = btn.getAttribute('data-filter');
+        productFilterBtns.forEach(function (b) {
+          b.classList.toggle('is-active', b === btn);
+          b.setAttribute('aria-pressed', String(b === btn));
+        });
+        productGroups.forEach(function (group) {
+          var show = want === 'all' || group.getAttribute('data-cat') === want;
+          group.classList.toggle('is-hidden', !show);
+        });
+      });
+    });
+  }
+
+  /* ------------------------------------------------------ Product detail */
+  var productItems = $$('.product-item');
+  var productDetail = $('#product-detail');
+  if (productItems.length && productDetail) {
+    var pdEyebrow    = $('[data-pd-eyebrow]', productDetail);
+    var pdName       = $('[data-pd-name]', productDetail);
+    var pdBrandName  = $('[data-pd-brand-name]', productDetail);
+    var pdBrandLink  = $('[data-pd-brand-link]', productDetail);
+    var pdDesc       = $('[data-pd-desc]', productDetail);
+    var pdEmpty      = $('[data-pd-empty]', productDetail);
+    var pdBody       = $('[data-pd-body]', productDetail);
+    var pdIconUse    = $('[data-pd-icon-use]', productDetail);
+
+    productItems.forEach(function (item) {
+      item.addEventListener('click', function () {
+        productItems.forEach(function (i) { i.classList.toggle('is-active', i === item); });
+        if (pdEyebrow) pdEyebrow.textContent = item.getAttribute('data-brand') + ' — Product';
+        if (pdName) pdName.textContent = item.getAttribute('data-name');
+        if (pdBrandName) pdBrandName.textContent = 'Visit ' + item.getAttribute('data-brand');
+        if (pdBrandLink) pdBrandLink.href = item.getAttribute('data-brand-url');
+        if (pdDesc) pdDesc.textContent = item.getAttribute('data-desc');
+        if (pdIconUse) pdIconUse.setAttribute('href', '#icon-' + item.getAttribute('data-icon'));
+        if (pdEmpty) pdEmpty.hidden = true;
+        if (pdBody) pdBody.hidden = false;
+        productDetail.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+  }
+
   /* ------------------------------------------------------------ Lightbox */
   var lightbox = $('.lightbox');
   if (lightbox && projectCards.length) {
